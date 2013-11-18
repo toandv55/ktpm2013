@@ -26,7 +26,7 @@ gem install cucumber
 gem install rspec
 gem install watir-webdriver
 
-# open directory login run command
+# open directory login and run command
 cucumber 
 # this project tests the login function of truongnha.com
 # file feature/login.feature is testing script
