@@ -28,7 +28,7 @@ gem install watir-webdriver
 
 # open directory login run command
 cucumber 
-# this project test the login function of truongnha.com
+# this project tests the login function of truongnha.com
 # file feature/login.feature is testing script
 # file feature/step_definitions implements the script
 # go to http://watirwebdriver.com/ to read more about watir-webdriver
