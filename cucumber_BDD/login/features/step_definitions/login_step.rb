@@ -23,7 +23,7 @@ When(/^I click on the button Đăng nhập at login page$/) do
     browser.input(:id => 'login').click
 end
 
-Then(/^I see the a page with the text "(.*?)"$/) do |school_name|
+Then(/^I see a page with the text "(.*?)"$/) do |school_name|
     browser.text.should include(school_name)    
 end
 

@@ -5,5 +5,5 @@ Feature: Test function login of site truongnha.com
             And I fill "toandv" in textbox Tên đăng nhập
             And I fill "phindpeft904" in textbox Mật khẩu
             And I click on the button Đăng nhập at login page
-        Then I see the a page with the text "Team_08"  
+        Then I see a page with the text "Team_08"  
 
