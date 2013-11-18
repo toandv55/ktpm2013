@@ -1,0 +1,39 @@
+# install ruby on centos/fedora
+# with ubuntu, use apt-get instead 
+yum install curl 
+# install rmv
+curl -L get.rvm.io | bash -s stable
+
+# check for dependencies
+rvm requirements
+
+# install all the dependencies which are printed
+# output will look like: 
+# Additional Dependencies:
+# For Ruby / Ruby HEAD (MRI, Rubinius, & REE), install the following:
+# ruby: yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel 
+# libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel 
+# Then install all the dependencies, maybe more or less than the following 
+rvmsudo yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel 
+openssl-devel make bzip2 autoconf automake libtool bison iconv-devel 
+
+# finally install ruby 2.0.0
+rvm install 2.0.0
+rvm use 2.0.0 --default 
+
+#  install cucumber
+gem install cucumber
+gem install rspec
+gem install watir-webdriver
+
+# open directory login run command
+cucumber 
+# this project test the login function of truongnha.com
+# file feature/login.feature is testing script
+# file feature/step_definitions implements the script
+# go to http://watirwebdriver.com/ to read more about watir-webdriver
+# could go http://www.tutorialspoint.com/ruby/ for learning some ruby syntax, so easy
+# http://cukes.info/ cucumber's official site
+
+
+
