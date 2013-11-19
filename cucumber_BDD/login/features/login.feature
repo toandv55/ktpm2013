@@ -1,4 +1,4 @@
-Feature: Test function login of site truongnha.com
+﻿Feature: Test function login of site truongnha.com
     Scenario: Login
         Given I am on "truongnha.com"
         When I click on the button Đăng nhập at home page

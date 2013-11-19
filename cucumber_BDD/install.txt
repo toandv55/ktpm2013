@@ -37,3 +37,14 @@ cucumber
 
 
 
+#install on window
+1. download ruby and install add directory C:\Ruby192\bin to path 
+http://rubyforge.org/frs/download.php/74298/rubyinstaller-1.9.2-p180.exe
+2. dowload and copy to C:\devkit then extract , set C:\devkit\bin and C:\devkit\mingw\bin to path
+http://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.1-20101214-1400-sfx.exe
+3. install cucumber and other support libs
+	gem install cucumber
+	gem install rspec
+	gem install watir-webdriver
+# finish
+	

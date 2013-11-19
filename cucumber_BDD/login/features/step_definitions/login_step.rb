@@ -1,4 +1,4 @@
-require 'watir-webdriver'
+﻿require 'watir-webdriver'
 require 'rspec'
 
 browser = Watir::Browser.new :firefox
