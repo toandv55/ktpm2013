@@ -46,8 +46,11 @@ http://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.1-20101214-
 	gem install cucumber
 	gem install rspec
 	gem install watir-webdriver
+	gem install capybara
 4. To make windows' console color the output when running cucumber, 
 navigate to directory cucumber_BDD\ansi160\x86 (x64 for win64), 
 open cmd, run ansicon -i
 # finish
+
+# example in directory login_update supports ajax 
 	
