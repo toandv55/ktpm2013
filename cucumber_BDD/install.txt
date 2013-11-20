@@ -1,56 +1,22 @@
-# install ruby on centos/fedora
-# with ubuntu, use apt-get instead 
-yum install curl 
-# install rmv
-curl -L get.rvm.io | bash -s stable
-
-# check for dependencies
-rvm requirements
-
-# install all the dependencies which are printed
-# output will look like: 
-# Additional Dependencies:
-# For Ruby / Ruby HEAD (MRI, Rubinius, & REE), install the following:
-# ruby: yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel 
-# libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel 
-# Then install all the dependencies, maybe more or less than the following 
-rvmsudo yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel 
-openssl-devel make bzip2 autoconf automake libtool bison iconv-devel 
-
-# finally install ruby 2.0.0
-rvm install 2.0.0
-rvm use 2.0.0 --default 
-
-#  install cucumber
-gem install cucumber
-gem install rspec
-gem install watir-webdriver
-
-# open directory login and run command
-cucumber 
-# this project tests the login function of truongnha.com
-# file feature/login.feature is testing script
-# file feature/step_definitions implements the script
-# go to http://watirwebdriver.com/ to read more about watir-webdriver
-# could go http://www.tutorialspoint.com/ruby/ for learning some ruby syntax, so easy
-# http://cukes.info/ cucumber's official site
-
-
-
 #install on window
-1. download ruby and install, then add directory C:\Ruby192\bin to path 
-http://rubyforge.org/frs/download.php/74298/rubyinstaller-1.9.2-p180.exe
+1. download ruby and install, then add directory C:\Ruby193\bin to path 
+http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-1.9.3-p448.exe
 2. dowload and copy to C:\devkit, then extract , set C:\devkit\bin and C:\devkit\mingw\bin to path
-http://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.1-20101214-1400-sfx.exe
+https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe
+
 3. install cucumber and other support libs
+	gem update --system
+	gem update 
 	gem install cucumber
 	gem install rspec
-	gem install watir-webdriver
 	gem install capybara
+	
 4. To make windows' console color the output when running cucumber, 
 navigate to directory (clone from github) cucumber_BDD\ansi160\x86 (x64 for win64), 
 open cmd, run ansicon -i
 # finish
+ 
 
-# example in directory login_update supports ajax 
-	
+
+
+
