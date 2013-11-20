@@ -15,6 +15,15 @@ https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229
 navigate to directory (clone from github) cucumber_BDD\ansi160\x86 (x64 for win64), 
 open cmd, run ansicon -i
 # finish
+
+
+# on ubuntu
+0. sudo apt-get update
+1. sudo apt-get install ruby2.0 (or 1.9.3)
+2.	gem update
+	gem install cucumber
+	gem install rspec
+	gem install capybara
  
 
 
