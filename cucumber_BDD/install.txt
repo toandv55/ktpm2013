@@ -8,6 +8,7 @@ https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229
 	gem update --system
 	gem update 
 	gem install cucumber
+	gem install watir-webdriver
 	gem install rspec
 	gem install capybara
 	
@@ -22,6 +23,7 @@ open cmd, run ansicon -i
 1. sudo apt-get install ruby2.0 (or 1.9.3)
 2.	gem update
 	gem install cucumber
+	gem install watir-webdriver
 	gem install rspec
 	gem install capybara
  
