@@ -1,0 +1,30 @@
+*** Settings ***
+Resource       resource.txt
+
+
+*** Test Cases ***
+
+Hiển thị trang giáo viên
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Click Button  login
+
+Xóa thành công giáo viên
+	Xóa thành công  3466
+	
+*** Keywords ***
+Chọn giáo viên  [Arguments]  ${teacherID}
+	Select Checkbox  ${teacherID}
+
+Ấn nút xóa giáo viên
+	Click Link  delete
+		
+Xóa thành công  [Arguments]  ${teacherID}			
+	Đi tới trang Giáo viên	
+	Chọn giáo viên       				checkbox_${teacherID}      
+	Mở menu quản lý giáo viên	
+	Ấn nút xóa giáo viên
+	Confirm Action
+	Set Selenium Speed  				0.5		
+	Page Should Not Contain Checkbox  	checkbox_${teacherID}  

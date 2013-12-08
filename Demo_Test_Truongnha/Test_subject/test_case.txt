@@ -1,0 +1,30 @@
+﻿*** Settings ***
+Documentation  A test suite with a single test for valid login. This test has a workflow that is created using keywords from the resource file.
+
+Resource       resource.txt
+
+
+*** Test Cases ***
+	
+Hiển thị trang thông tin lớp
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Submit Credentials
+	Mở trang Thông tin lớp 10A
+	Phải hiển thị trang thông tin lớp 10A
+	
+Hiển thị trang quản lý môn học lớp 10A
+	Mở trang quản lý môn học
+	Phải hiển thị trang quản lý môn học lớp 10A
+	
+Thêm một môn học
+	Ấn nút Nâng cao
+	Nhập tên môn học          Múa hát
+	Chọn chuyên môn           Tự chọn
+	Nhập số tiết/tuần         '1'
+	Nhập hệ số điểm           '1.0'
+	Chọn cách tính điểm       Tính cả 2
+	Ấn nút Thêm
+	Bảng phải chứa  15  Múa hát
+	

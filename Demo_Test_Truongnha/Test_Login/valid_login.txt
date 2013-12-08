@@ -1,0 +1,17 @@
+*** Settings ***
+Documentation  A test suite with a single test for valid login. This test has a workflow that is created using keywords from the resource file.
+
+Resource       resource.txt
+
+
+*** Test Cases ***
+
+Valid Login
+    Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Submit Credentials
+    Welcome Page Should Be Open
+    
+
+

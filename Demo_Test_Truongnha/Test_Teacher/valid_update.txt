@@ -1,0 +1,64 @@
+*** Settings ***
+Documentation  A test suite with a single test for valid login. This test has a workflow that is created using keywords from the resource file.
+
+Resource       resource.txt
+
+*** Test Cases ***
+
+Hiển thị trang giáo viên
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Click Button  login
+	
+Cập nhật giáo viên thành công
+	Cập nhật thành công  3467  Hà  Nội
+	
+*** Keywords ***
+
+Cập nhật thành công  [Arguments]  ${teacherId}  ${họ mới}  ${tên mới}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Nhập họ                                 ${họ mới}
+	Nhập tên                                ${tên mới}
+	Ấn nút Lưu
+	Phải hiển thị trang của giáo viên       ${teacherId} 
+	Chờ thông báo hiển thị	
+	Element Should Be Visible   			notify
+	Element Should Contain  notify  		Đã lưu	
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Họ phải là                              ${họ mới}
+	Tên phải là                             ${tên mới}
+
+Phải hiển thị trang của giáo viên  [Arguments]  ${teacherId}
+	Location Should Be  ${WELCOME URL}/viewTeacherDetail/${teacherId}
+	
+Chọn giáo viên có mã  [Arguments]  ${teacherId}
+	Click Link  ${WELCOME URL}/viewTeacherDetail/${teacherId}
+	
+Đi tới trang sửa của giáo viên  [Arguments]  ${teacherId}
+	Go To  ${WELCOME URL}/viewTeacherDetail/${teacherId}
+
+Nhập họ  [Arguments]  ${lastname}
+	Input Text  id_last_name  ${lastname}
+	
+Nhập tên  [Arguments]  ${firstname}
+	Input Text  id_first_name  ${firstname}
+	
+Ấn nút Lưu
+	Click Button  Lưu
+	
+Phải hiện thông báo
+	Element Should Be Visible  notify
+
+Chờ thông báo hiển thị
+	Wait Until Element Is Visible  notify  1000
+	
+	
+Thông báo phải hiển thị đã lưu
+	Element Should Contain  notify  Đã lưu
+
+Họ phải là  [Arguments]  ${lastname}
+	Element Should Contain  id_last_name  ${lastname}
+	
+Tên phải là  [Arguments]  ${firstname}
+	Element Should Contain  ${firstname}

@@ -1,0 +1,86 @@
+*** Settings ***
+
+Documentation  A resource file containing the demo app specific keywords and variables that create our own domain specific language. Also SeleniumLibrary itself is imported here so that tests only need to import this resource file.
+
+Library        Selenium2Library
+
+
+*** Variables ***
+
+${BROWSER}       Firefox
+${DELAY}         0
+${HOST}          truongnha.com
+${LOGIN URL}     http://${HOST}/login/
+${WELCOME URL}   http://${HOST}/school/
+${TEACHER URL}   http://${HOST}/school/teachers
+${VALID USER}    toandv
+${VALID PASSWD}  phindpeft904
+
+
+*** Keywords ***	
+
+Mở trang login
+    Open Browser  ${LOGIN URL}  ${BROWSER}
+    Maximize Browser Window
+    Set Selenium Speed  ${DELAY}  
+
+Input Username  [Arguments]  ${username}
+    Input Text  id_username  ${username}
+
+Input Password  [Arguments]  ${password}
+    Input Text  id_password  ${password}	
+	
+Mở trang Welcome
+    Open Browser  ${WELCOME URL}  ${BROWSER}
+    Maximize Browser Window
+    Set Selenium Speed  ${DELAY}
+	
+Đi tới trang Welcome
+    Go To  ${WELCOME URL}    
+
+Đi tới trang Giáo viên
+	Go To  ${TEACHER URL}
+	
+Click vào trang Giáo viên
+	Click Link  teachers
+
+Mở menu quản lý giáo viên
+	Click Link  teacher-list-menu
+	
+Ấn nút thêm giáo viên
+	Click Link  add-teacher
+	
+Nhập họ tên  [Arguments]  ${name}
+	Input Text  id_first_name  ${name}
+	
+Nhập ngày sinh  [Arguments]  ${birthday}
+	Input Text  id_birthday  ${birthday}
+	
+Nhập số điện thoại  [Arguments]  ${phone}
+	Input Text  id_sms_phone  ${phone}
+	
+Chọn giới tính  [Arguments]  ${sex}
+	Select From List  xpath=//select[@id="id_sex"]  ${sex}
+	
+Chọn chuyên môn  [Arguments]  ${major}
+	Select From List  xpath=//select[@id="id_major"]  ${major}
+	
+Chọn tổ  [Arguments]  ${team}
+	Select From List  xpath=//select[@id="id_team_id"]  ${team}
+	
+Chọn nhóm  [Arguments]  ${group}
+	Select From List  xpath=//select[@id="id_group_id"]  ${group}
+	
+Ấn nút thêm
+	Click Button  submitaddTeacher
+
+Bảng phải chứa  [Arguments]  ${row}  ${content}
+	Table Row Should Contain  teacher_table  ${row}  ${content}
+	
+Bảng phải chứa 2  [Arguments]  ${content}
+	Table Should Contain  teacher_table  ${content}
+	
+Phải hiển thị trang Giáo viên
+    Location Should Be  ${TEACHER URL} 
+
+

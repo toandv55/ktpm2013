@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20131208 09:49:01.800" generator="Robot 2.8.3 (Python 2.7.6 on win32)">
+<suite source="C:\Users\do\Downloads\test\Test_subject_display\test_case.txt" id="s1" name="Test Case">
+<test id="s1-t1" name="Hiển thị trang thông tin lớp">
+<kw type="kw" name="resource.Mở trang login">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>

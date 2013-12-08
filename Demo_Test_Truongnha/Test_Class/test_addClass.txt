@@ -1,0 +1,54 @@
+*** Settings ***
+Resource		resource.txt
+
+*** Test Cases ***
+Đăng nhập
+	Đăng nhập vào hệ thống
+	Điền tài khoản
+	Điền mật khẩu
+	Ấn nút đăng nhập
+
+Thêm lớp học [Không có tên lớp]
+	Ấn nút lớp học
+	Thêm lớp học mới			
+	Điền tên lớp  			  ${EMPTY}
+	Chọn phân ban  			  KHTN
+	Chọn giáo viên chủ nhiệm  3417
+	Ấn nút thêm đặc biệt
+	Location Should Be   http://${HOST}${ADDCLASS URL}
+	
+Thêm lớp học [Không có giáo viên chủ nhiệm]
+	Điền tên lớp  			  12 A
+	Chọn phân ban  			  KHTN
+	Chọn giáo viên chủ nhiệm  ${EMPTY}
+	Ấn nút thêm
+	Location Should Be   http://${HOST}${CLASS URL}
+	
+Thêm lớp học [Có giáo viên chủ nhiệm - GV chưa làm CN]
+	Thêm lớp học mới
+	Điền tên lớp  			  12 B
+	Chọn phân ban  			  KHTN
+	Chọn giáo viên chủ nhiệm  3417
+	Ấn nút thêm
+	Location Should Be   http://${HOST}${CLASS URL}
+	
+Thêm lớp học [Có giáo viên chủ nhiệm - GV đã làm CN]
+	Thêm lớp học mới
+	Điền tên lớp  			  12 C
+	Chọn phân ban  			  KHTN
+	Chọn giáo viên chủ nhiệm  3417
+	Ấn nút thêm
+	Location Should Be   http://${HOST}${ADDCLASS URL}
+	
+Cập nhật giáo viên chủ nhiệm lớp - GV đã làm chủ nhiệm]
+	Đăng nhập vào hệ thống
+	Điền tài khoản
+	Điền mật khẩu
+	Ấn nút đăng nhập
+	Ấn nút lớp học
+	Cập nhật giáo viên chủ nhiệm lớp FALSE  12 A
+	Location Should Be   http://${HOST}${CLASS URL}
+	
+Cập nhật giáo viên chủ nhiệm lớp - GV chưa làm chủ nhiệm]
+	Cập nhật giáo viên chủ nhiệm lớp TRUE  12 A
+	Location Should Be   http://${HOST}${CLASS URL}
