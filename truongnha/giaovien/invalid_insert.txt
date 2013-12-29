@@ -1,0 +1,118 @@
+*** Settings ***
+Resource       resource.txt
+
+
+*** Test Cases ***
+
+Hiển thị trang giáo viên
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Click Button  login
+
+Lỗi không nhập tên
+	Không nhập tên  			01/02/1970	 01211211122  Nam  Toán  ---------  ---------
+
+Lỗi không nhập ngày sinh
+	Không nhập ngày sinh		Nguyễn Văn Hải  01211211122  Nam  Toán  ---------  ---------
+	
+Lỗi tên chứa mã độc
+	Chứa mã độc					Nguyễn '  01/02/1970  01211211122  Nam  Toán  ---------  ---------
+
+Lỗi ngày sinh không hợp lệ
+	Ngày sinh không hợp lệ  	Trần Hoa  02/12/2013	 01211211122  Nữ  Toán  ---------  ---------
+	
+Lỗi trùng thông tin
+	Giáo viên trùng 			Nguyễn Văn Hải  01/02/1970	 01211211122  Nam  Toán  ---------  ---------
+	
+Lỗi không đúng định dạng số điện thoại
+	Số điện thoại không đúng định dạng 			Nguyễn Văn An  01/02/1970	 0121  Nam  Toán  ---------  ---------
+	
+*** Keywords ***
+Giáo viên trùng  [Arguments]  ${name}  ${birthday}  ${phone}  ${sex}  ${major}  ${team}  ${group}
+	Đi tới trang Giáo viên	
+	Mở menu quản lý giáo viên
+	Ấn nút thêm giáo viên
+	Nhập họ tên                 ${name}
+	Nhập ngày sinh              ${birthday}
+	Nhập số điện thoại          ${phone}
+	Chọn giới tính              ${sex}
+	Chọn chuyên môn             ${major}
+	Chọn tổ                     ${team}
+	Chọn nhóm                   ${group}
+	Ấn nút thêm
+	Wait Until Page Contains  	Giáo viên này đã tồn tại trong hệ thống
+	Page Should Contain			Giáo viên này đã tồn tại trong hệ thống
+	
+Ngày sinh không hợp lệ  [Arguments]  ${name}  ${birthday}  ${phone}  ${sex}  ${major}  ${team}  ${group}	
+	Đi tới trang Giáo viên	
+	Mở menu quản lý giáo viên
+	Ấn nút thêm giáo viên
+	Nhập họ tên                 ${name}
+	Nhập ngày sinh              ${birthday}
+	Nhập số điện thoại          ${phone}
+	Chọn giới tính              ${sex}
+	Chọn chuyên môn             ${major}
+	Chọn tổ                     ${team}
+	Chọn nhóm                   ${group}
+	Ấn nút thêm
+	Wait Until Page Contains    Ngày nằm ngoài khoảng cho phép
+	Page Should Contain  		Ngày nằm ngoài khoảng cho phép
+	
+Không nhập tên  [Arguments]  ${birthday}  ${phone}  ${sex}  ${major}  ${team}  ${group}
+	Đi tới trang Giáo viên	
+	Mở menu quản lý giáo viên
+	Ấn nút thêm giáo viên	
+	Nhập ngày sinh              ${birthday}
+	Nhập số điện thoại          ${phone}
+	Chọn giới tính              ${sex}
+	Chọn chuyên môn             ${major}
+	Chọn tổ                     ${team}
+	Chọn nhóm                   ${group}
+	Ấn nút thêm	
+	Wait Until Page Contains    Trường này là bắt buộc
+	Page Should Contain  		Trường này là bắt buộc
+	
+Không nhập ngày sinh  [Arguments]  ${name}  ${phone}  ${sex}  ${major}  ${team}  ${group}
+	Đi tới trang Giáo viên	
+	Mở menu quản lý giáo viên
+	Ấn nút thêm giáo viên	
+	Nhập họ tên                 ${name}
+	Nhập số điện thoại          ${phone}
+	Chọn giới tính              ${sex}
+	Chọn chuyên môn             ${major}
+	Chọn tổ                     ${team}
+	Chọn nhóm                   ${group}
+	Ấn nút thêm	
+	Wait Until Page Contains    Trường này là bắt buộc
+	Page Should Contain  		Trường này là bắt buộc
+	
+Số điện thoại không đúng định dạng  [Arguments]  ${name}  ${birthday}  ${phone}  ${sex}  ${major}  ${team}  ${group}	
+	Đi tới trang Giáo viên	
+	Mở menu quản lý giáo viên
+	Ấn nút thêm giáo viên	
+	Nhập họ tên                 ${name}
+	Nhập ngày sinh              ${birthday}
+	Nhập số điện thoại          ${phone}
+	Chọn giới tính              ${sex}
+	Chọn chuyên môn             ${major}
+	Chọn tổ                     ${team}
+	Chọn nhóm                   ${group}
+	Ấn nút thêm	
+	Wait Until Page Contains    Có lỗi ở dữ liệu nhập vào.
+	
+Chứa mã độc  [Arguments]  ${name}  ${birthday}  ${phone}  ${sex}  ${major}  ${team}  ${group}
+	Đi tới trang Giáo viên	
+	Mở menu quản lý giáo viên
+	Ấn nút thêm giáo viên	
+	Nhập họ tên                 ${name}
+	Nhập ngày sinh              ${birthday}
+	Nhập số điện thoại          ${phone}
+	Chọn giới tính              ${sex}
+	Chọn chuyên môn             ${major}
+	Chọn tổ                     ${team}
+	Chọn nhóm                   ${group}
+	Ấn nút thêm	
+	Click Element				school-name
+	Wait Until Page Contains    Thông tin bạn vừa nhập có chứa mã độc.
+	Page Should Contain  		Thông tin bạn vừa nhập có chứa mã độc.

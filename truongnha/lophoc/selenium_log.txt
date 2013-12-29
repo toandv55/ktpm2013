@@ -1,0 +1,61 @@
+Dec 29, 2013 8:09:45 PM org.openqa.grid.selenium.GridLauncher main
+INFO: Launching a standalone server
+20:09:51.169 INFO - Java: Oracle Corporation 23.25-b01
+20:09:51.189 INFO - OS: Windows 7 6.1 amd64
+20:09:51.320 INFO - v2.21.0, with Core v2.21.0. Built from revision 16552
+20:09:52.105 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+20:09:52.110 INFO - Version Jetty/5.1.x
+20:09:52.131 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
+20:09:52.133 INFO - Started HttpContext[/selenium-server,/selenium-server]
+20:09:52.133 INFO - Started HttpContext[/,/]
+20:09:55.056 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@2b7ac7ba
+20:09:55.056 INFO - Started HttpContext[/wd,/wd]
+20:09:55.120 INFO - Started SocketListener on 0.0.0.0:4444
+20:09:55.120 INFO - Started org.openqa.jetty.jetty.Server@1c10945d
+20:09:56.298 INFO - Checking Resource aliases
+20:09:56.307 INFO - Checking Resource aliases
+20:09:56.335 INFO - Command request: getNewBrowserSession[*googlechrome, http://truongnha.com/login/, , addCustomRequestHeaders=true] on session null
+20:09:56.343 INFO - creating new remote session
+20:09:56.986 INFO - Allocated session ed6e92d11b604d09995f2d4924ee868d for http://truongnha.com/login/, launching...
+20:09:57.019 INFO - Launching Google Chrome...
+20:10:07.809 INFO - Got result: OK,ed6e92d11b604d09995f2d4924ee868d on session ed6e92d11b604d09995f2d4924ee868d
+20:10:07.833 INFO - Command request: setTimeout[10000.0, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:07.889 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:07.929 INFO - Command request: open[http://truongnha.com/login/, True] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:09.420 INFO - Couldn't proxy to http://wrrdbtpjur/ because host not found
+20:10:09.420 INFO - Couldn't proxy to http://wudxwiecpu/ because host not found
+20:10:09.420 INFO - Couldn't proxy to http://iaiclwdfqp/ because host not found
+20:10:16.350 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.388 INFO - Command request: windowMaximize[, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.495 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.534 INFO - Command request: getSpeed[, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.534 INFO - Got result: OK,0 on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.563 INFO - Command request: setSpeed[0, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.564 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.811 INFO - Command request: type[id_username, toandv] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.853 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.876 INFO - Command request: type[id_password, phindpeft904] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.911 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.933 INFO - Command request: getLocation[, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:16.993 INFO - Got result: OK,http://truongnha.com/login/ on session ed6e92d11b604d09995f2d4924ee868d
+20:10:17.007 INFO - Command request: click[xpath=//input[@id="login" or @name="login" or @value="login" or @src="login" or @src="http://truongnha.com/login/login"], ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:17.094 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:17.287 INFO - Command request: waitForPageToLoad[10000.0, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:21.474 INFO - Started SocketListener on 0.0.0.0:53646
+20:10:22.165 INFO - Started SocketListener on 0.0.0.0:53677
+20:10:22.718 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:22.746 INFO - Command request: getLocation[, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:22.778 INFO - Got result: OK,http://truongnha.com/school/ on session ed6e92d11b604d09995f2d4924ee868d
+20:10:22.851 INFO - Command request: click[xpath=//a[@id="/school/classes" or @name="/school/classes" or @href="/school/classes" or normalize-space(descendant-or-self::text())="/school/classes" or @href="http://truongnha.com/school//school/classes"], ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:22.931 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:23.478 INFO - Command request: waitForPageToLoad[10000.0, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:23.502 INFO - Started SocketListener on 0.0.0.0:53683
+20:10:24.059 INFO - Started SocketListener on 0.0.0.0:53685
+20:10:24.183 INFO - Got result: OK on session ed6e92d11b604d09995f2d4924ee868d
+20:10:24.213 INFO - Command request: getLocation[, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:24.300 INFO - Got result: ERROR: Current window or frame is closed! on session ed6e92d11b604d09995f2d4924ee868d
+20:10:24.312 INFO - Command request: captureScreenshotToString[, ] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:24.333 INFO - Creating Robot
+20:10:24.629 INFO - Started SocketListener on 0.0.0.0:53700
+20:10:28.311 INFO - Got result: [base64 encoded PNG] on session ed6e92d11b604d09995f2d4924ee868d
+20:10:28.368 INFO - Command request: type[id_name, 12 A] on session ed6e92d11b604d09995f2d4924ee868d

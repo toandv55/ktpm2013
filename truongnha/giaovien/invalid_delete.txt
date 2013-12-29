@@ -1,0 +1,20 @@
+*** Settings ***
+Resource       resource.txt
+
+*** Test Cases ***
+
+Hiển thị trang giáo viên
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Click Button  login
+
+Không chọn mà xóa
+	Đi tới trang Giáo viên
+	Mở menu quản lý giáo viên	
+	Ấn nút xóa giáo viên
+	Confirm Action	
+	
+*** Keywords ***
+Ấn nút xóa giáo viên
+	Click Link  delete

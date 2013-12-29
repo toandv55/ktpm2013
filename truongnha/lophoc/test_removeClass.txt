@@ -1,0 +1,15 @@
+*** Settings ***
+Resource		resource.txt
+
+*** Test Cases ***
+Đăng nhập
+	Đăng nhập vào hệ thống
+	Điền tài khoản
+	Điền mật khẩu
+	Ấn nút đăng nhập
+
+Xóa lớp học
+	Ấn nút lớp học
+	Xóa lớp học
+	Location Should Be   http://${HOST}${CLASS URL}
+	

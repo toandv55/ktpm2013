@@ -1,0 +1,50 @@
+﻿*** Settings ***
+
+
+Resource       resource.txt
+
+
+*** Test Cases ***
+	
+Hiển thị trang thông tin lớp
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Submit Credentials
+	Mở trang Thông tin lớp 10A
+	
+Hiển thị trang quản lý môn học lớp 10A
+	Mở trang quản lý môn học
+	Phải hiển thị trang quản lý môn học lớp 10A
+
+Xem thông tin môn Hoá học
+	Vào xem nội dung môn học  20411
+	Sửa nội dung tiêu đề  4335  Kiểm tra đầu năm
+	Sửa nội dung ghi chú  4336  Thu tiền học
+	Xoá nội dung          4338
+	
+*** Keywords ***
+Vào xem nội dung môn học  [Arguments]  ${id}
+	Click Link  xpath=//tr[@id="${id}"]/td/a[@class="btn btn-small"]
+	Location Should Be  http://truongnha.com/school/subjectAgenda/${id}
+	
+Sửa nội dung tiêu đề  [Arguments]  ${id}  ${content}
+	Input Text  xpath=//tr[@id="${id}"]/td/textarea[@id="id_title"]  ${content}
+	Click Element  xpath=//tr[@id="${id}"]/td
+	Wait Until Page Contains  Đã lưu
+	
+Sửa nội dung ghi chú  [Arguments]  ${id}  ${content}
+	Input Text  xpath=//tr[@id="${id}"]/td/textarea[@id="id_note"]  ${content}
+	Click Element  xpath=//tr[@id="${id}"]/td
+	Wait Until Page Contains  Đã lưu
+	
+Xoá nội dung  [Arguments]  ${id}
+	Click Button  xpath=//tr[@id="${id}"]/td/button[@class="btn delete"]
+	Confirm Action
+	Wait Until Page Contains  Đã xoá
+	
+	
+	
+	
+	
+	

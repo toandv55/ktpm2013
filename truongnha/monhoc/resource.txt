@@ -1,0 +1,108 @@
+﻿*** Settings ***
+
+Documentation  A resource file containing the demo app specific keywords and variables that create our own domain specific language. Also SeleniumLibrary itself is imported here so that tests only need to import this resource file.
+
+Library        Selenium2Library
+
+
+*** Variables ***
+
+${BROWSER}          Firefox
+${DELAY}            0
+${HOST}             truongnha.com
+${LOGIN URL}        http://${HOST}/login/
+${WELCOME URL}      http://${HOST}/school/
+${CLASS1446 URL}    http://${HOST}/school/viewClassDetail/1446
+${SUBJECT1446 URL}  http://${HOST}/school/subjectPerClass/1446
+${VALID USER}       toandv
+${VALID PASSWD}     phindpeft904
+
+
+*** Keywords ***	
+
+Mở trang login
+    Open Browser  ${LOGIN URL}  ${BROWSER}
+    Maximize Browser Window
+    Set Selenium Speed  ${DELAY}    
+
+Go To Login Page
+    Go To  ${LOGIN URL}    
+
+Input Username  [Arguments]  ${username}
+    Input Text  id_username  ${username}
+
+Input Password  [Arguments]  ${password}
+    Input Text  id_password  ${password}
+
+Submit Credentials
+    Click Button  login
+	
+Đi tới trang Welcome
+    Go To  ${WELCOME URL}    
+
+Mở trang Thông tin lớp 10A
+	Click Link  1446
+
+Mở trang quản lý môn học
+	Click Link  btn-monhoc
+	
+Ấn nút Nội dung  [Arguments]  ${id}
+	Click Button  xpath=//tr[]/td/a/
+	
+Ấn nút Nâng cao
+	Click Button  advanced
+	
+Nhập tên môn học  [Arguments]  ${name}
+	Input Text  id_name  ${name}
+	
+Chọn chuyên môn  [Arguments]  ${type}
+	Select From List  xpath=//tr[@id="subject_form"]/td/p/select[@id="id_type"]  ${type}
+	
+Nhập số tiết/tuần  [Arguments]  ${numblesson}
+	Input Text  xpath=//tr[@id="subject_form"]/td/p/input[@id="id_number_lesson"]  ${numblesson}
+	
+Nhập hệ số điểm  [Arguments]  ${hs}
+	Input Text  xpath=//tr[@id="subject_form"]/td/p/input[@id="id_hs"]  ${hs}
+	
+Chọn giáo viên  [Arguments]  ${teacher}
+	Select From List  xpath=//tr[@id="subject_form"]/td/div/div/select[@id="id_teacher_id"]  ${teacher}
+	
+Chọn cách tính điểm  [Arguments]  ${primary}
+	Select From List  xpath=//tr[@id="subject_form"]/td/p/select[@id="id_primary"]  ${primary}
+	
+Ấn nút thêm
+	Click Button  xpath=//tr[@id="subject_form"]/td/input[@id="submit"]
+
+Ấn nút xoá môn Lịch sử
+	Click Button  xpath=//tr[@id="20415"]/td/button[@value="Xoá"]
+	
+Xác nhận xoá môn học
+	Choose Ok On Next Confirmation
+	
+Bảng không được chứa  [Arguments]  ${content}
+	Current Frame Should Not Contain  ${content}
+	
+Bảng phải chứa  [Arguments]  ${content}
+	Page Should Contain  ${content}
+	
+Bảng phải chứa 2  [Arguments]  ${content}
+	Table Should Contain  teacher_table  ${content}
+	
+Tải lại trang
+	Reload Page
+	
+Đổi số tiết/tuần  [Arguments]  ${idsubj}  ${numb}
+	Input Text  xpath=//tr[@id="${idsubj}"]/td/input[@id="id_number_lesson"]  ${numb}
+	Click Element  xpath=//div[@id="submenu"]
+	
+Đổi hệ số điểm  [Arguments]  ${idsubj}  ${numb}
+	Input Text  xpath=//tr[@id="${idsubj}"]/td/input[@id="id_hs"]  ${numb}
+	Click Element  xpath=//div[@id="submenu"]
+	
+Phải hiển thị trang thông tin lớp 10A
+    Location Should Be  ${CLASS1446 URL}
+
+Phải hiển thị trang quản lý môn học lớp 10A
+    Location Should Be  ${SUBJECT1446 URL} 	
+
+	

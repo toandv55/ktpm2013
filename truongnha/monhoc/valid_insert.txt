@@ -1,0 +1,35 @@
+﻿*** Settings ***
+
+
+Resource       resource.txt
+
+
+*** Test Cases ***
+	
+Hiển thị trang thông tin lớp
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Submit Credentials
+	Mở trang Thông tin lớp 10A
+	
+Hiển thị trang quản lý môn học lớp 10A
+	Mở trang quản lý môn học
+	Phải hiển thị trang quản lý môn học lớp 10A
+	
+Thêm một môn học thành công
+	Tải lại trang
+	Thêm môn học thành công  Nhảy nhót  Tự chọn  1  2.0  ${EMPTY}  Chỉ tính kì 1
+	Bảng phải chứa           Nhảy nhót
+
+*** Keywords ***
+Thêm môn học thành công  [Arguments]  ${name}  ${types}  ${numblesson}  ${hs}  ${teacher}  ${primary}
+	Ấn nút Nâng cao
+	Nhập tên môn học          ${name}
+	Chọn chuyên môn           ${types}
+	Nhập số tiết/tuần         ${numblesson}
+	Nhập hệ số điểm           ${hs}
+	Chọn giáo viên            ${teacher}
+	Chọn cách tính điểm       ${primary}
+	Ấn nút thêm
+	

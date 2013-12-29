@@ -1,0 +1,147 @@
+*** Settings ***
+Resource       resource.txt
+
+*** Test Cases ***
+
+Hiển thị trang giáo viên
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Click Button  login
+
+Lỗi không nhập tên
+	Để tên trống  								3506
+	
+Lỗi mã độc
+	Nhập dữ liệu chứa mã độc  					3506  'hello'
+	
+Lỗi trùng dữ liệu
+	Nhập dữ liệu trùng  						3506  Nguyễn Văn  Hải  01/02/1970
+	
+Lỗi ngày sinh không hợp lệ
+	Ngày sinh không hợp lệ  					3506  02/03/2015
+
+Lỗi email không hợp lệ
+	Email không hợp lệ							3506  hoa@gmail
+
+Lỗi ngày cấp trước thời gian hiện tại
+	Ngày cấp trước thời gian hiện tại			3506  02/03/2050
+
+Lỗi ngày cấp trước ngày sinh	
+	Ngày cấp trước ngày sinh					3506  02/03/1970  02/03/1969
+
+Lỗi ngày vào đoàn trước thời gian hiện tại
+	Ngày vào đoàn trước thời gian hiện tại		3506  02/03/2050
+
+Lỗi ngày vào đoàn trước ngày sinh
+	Ngày vào đoàn trước ngày sinh				3506  02/03/1970  02/03/1969
+	
+Lỗi ngày vào đảng trước thời gian hiện tại
+	Ngày vào đảng trước thời gian hiện tại		3506  02/03/2050
+
+Lỗi ngày vào đảng trước ngày vào đoàn
+	Ngày vào đảng trước ngày vào đoàn			3506  02/03/1970  02/03/1969
+
+Lỗi ngày vào đảng trước ngày sinh
+	Ngày vào đảng trước ngày sinh				3506  02/03/1970  02/03/1969
+
+
+*** Keywords ***
+
+Để tên trống  [Arguments]  ${teacherId}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_first_name  				\ 
+	Ấn nút Lưu
+	Wait Until Page Contains  				Có lỗi ở dữ liệu nhập vào
+	Page Should Contain  					Trường này là bắt buộc.
+	
+Nhập dữ liệu chứa mã độc  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_first_name				${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains  				Thông tin bạn vừa nhập có chứa mã độc.
+	Page Should Contain  					Thông tin bạn vừa nhập có chứa mã độc.
+	
+Nhập dữ liệu trùng  [Arguments]  ${teacherId}  ${họ}  ${tên}  ${ngày sinh}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_last_name  				${họ}
+	Input Text  id_first_name  				${tên}
+	Input Text  id_birthday  				${ngày sinh}
+	Ấn nút Lưu
+	Wait Until Page Contains  				Thông tin trùng với giáo viên khác trong hệ thống.
+	Page Should Contain						Thông tin trùng với giáo viên khác trong hệ thống.
+	
+Ngày sinh không hợp lệ  [Arguments]  ${teacherId}  ${ngày sinh}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_birthday  				${ngày sinh}
+	Ấn nút Lưu
+	Wait Until Page Contains    			Ngày nằm ngoài khoảng cho phép
+	Page Should Contain  					Ngày nằm ngoài khoảng cho phép
+	
+Email không hợp lệ  [Arguments]  ${teacherId}  ${email}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_email 					${email}
+	Ấn nút Lưu
+	Wait Until Page Contains    			Có lỗi ở dữ liệu nhập vào
+	Page Should Contain  					Enter a valid email address.
+
+Ngày cấp trước thời gian hiện tại  [Arguments]  ${teacherId}  ${ngày cấp}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_ngay_cap                	${ngày cấp}
+	Ấn nút Lưu
+	Wait Until Page Contains  				Có lỗi ở dữ liệu nhập vào
+	Page Should Contain						Có lỗi ở dữ liệu nhập vào
+
+Ngày cấp trước ngày sinh  [Arguments]  ${teacherId}  ${ngày sinh}  ${ngày cấp}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_birthday  				${ngày sinh}
+	Input Text  id_ngay_cap                	${ngày cấp}
+	Ấn nút Lưu
+	Wait Until Page Contains  				Có lỗi ở dữ liệu nhập vào
+	Page Should Contain						Có lỗi ở dữ liệu nhập vào
+
+Ngày vào đoàn trước thời gian hiện tại  [Arguments]  ${teacherId}  ${ngày vào đoàn}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_ngay_vao_doan            ${ngày vào đoàn}
+	Ấn nút Lưu
+	Wait Until Page Contains  				Có lỗi ở dữ liệu nhập vào
+	Page Should Contain						Ngày nẳm ngoài khoảng cho phép.
+
+Ngày vào đoàn trước ngày sinh  [Arguments]  ${teacherId}  ${ngày sinh}  ${ngày vào đoàn}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_birthday  				${ngày sinh}
+	Input Text  id_ngay_vao_doan            ${ngày vào đoàn}
+	Ấn nút Lưu
+	Wait Until Page Contains  				Có lỗi ở dữ liệu nhập vào
+	Page Should Contain						Có lỗi ở dữ liệu nhập vào
+
+Ngày vào đảng trước thời gian hiện tại  [Arguments]  ${teacherId}  ${ngày vào đảng}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_ngay_vao_dang            ${ngày vào đảng}
+	Ấn nút Lưu
+	Wait Until Page Contains  				Có lỗi ở dữ liệu nhập vào
+	Page Should Contain						Ngày nẳm ngoài khoảng cho phép.
+
+Ngày vào đảng trước ngày vào đoàn  [Arguments]  ${teacherId}  ${ngày vào đoàn}  ${ngày vào đảng}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_ngay_vao_doan  			${ngày vào đoàn}
+	Input Text  id_ngay_vao_dang            ${ngày vào đảng}
+	Ấn nút Lưu
+	Wait Until Page Contains  				Có lỗi ở dữ liệu nhập vào
+	Page Should Contain						Có lỗi ở dữ liệu nhập vào
+
+Ngày vào đảng trước ngày sinh  [Arguments]  ${teacherId}  ${ngày sinh}  ${ngày vào đảng}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Input Text  id_birthday  				${ngày sinh}
+	Input Text  id_ngay_vao_dang            ${ngày vào đảng}
+	Ấn nút Lưu
+	Wait Until Page Contains  				Có lỗi ở dữ liệu nhập vào
+	Page Should Contain						Có lỗi ở dữ liệu nhập vào
+
+
+
+Đi tới trang sửa của giáo viên  [Arguments]  ${teacherId}
+	Go To  ${WELCOME URL}/viewTeacherDetail/${teacherId}
+
+Ấn nút Lưu
+	Click Button  Lưu

@@ -1,0 +1,35 @@
+﻿note error:
+- Nhóm:
+	+ Sắp xếp nhóm ??? (theo tên hay theo thời gian tạo ?)
+	+ Sửa tên nhóm bị lỗi: 		 
+		Xử lý sai khi sửa tên nhóm trùng với tên nhóm ở tổ khác
+		Chưa ajax sang hiển thị nhóm ở thông tin giáo viên
+
+- Giáo viên:
+		
+	+ Thao tác : Tốc độ thao tác người dùng chưa tiện, nên bổ sung nút thêm và xóa ở ngay ngoài màn hình
+	+ Cần nhất quán trong việc nhập họ tên hay nhập riêng họ và tên (tránh lỗi)
+	
+	+ Thông báo lỗi chưa đúng (nhập dữ liệu ko hợp lệ -> ấn submit ngay -> ko thông báo chính xác lỗi)
+	
+	+ Thêm giáo viên:
+		Lỗi sau khi thêm giáo viên (hiển thị) (không đúng cột)		
+		Thiếu clear lỗi thông báo các trường cần nhập (thông báo lỗi ko được clear sau khi đã nhập đúng)		
+		Không thông báo chính xác lỗi khi nhập sai định dạng số điện thoại
+		Điện thoại chưa bắt hết các kí tự đặc biệt
+			
+	+ Sửa giáo viên:
+		Thiếu ajax chỗ hiển thị họ tên giáo viên sau khi cập nhật thành công
+		Số điện thoại với số điện thoại nhắn tin khác nhau thế nào ??? 
+		Ngày cấp chứng minh thư ko dùng HTML5 (consistant ?)
+		Ngày cấp chứng minh thư hiển thị lỗi ko rõ
+		Ngày cấp chứng minh thư, ngày vào đoàn, ngày vào đảng chưa validate nếu trước ngày sinh
+		Ngày vào đoàn phải trước ngày vào đảng
+		Ngày vào đoàn, vào đảng phải có chế độ clear
+		Mức lương, hệ số lương có nên cho vào hệ thống ???
+		Thông báo lỗi email chưa việt hóa
+		Chưa bắt đầy đủ các kí tự đặc biệt (vd : @)
+		
+	+ Xóa giáo viên :
+		Cần thông báo nếu giáo viên đấy đang chủ nhiệm lớp
+		Không thể xác định được id một cách tự động

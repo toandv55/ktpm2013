@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20131229 20:09:43.397" generator="Robot 2.8.1 (Python 2.7.5 on win32)">
+<suite source="D:\Google Drive\IT\Important\Software Engineering\Software Testing and Assurance\asg\lophoc\test_addClass.txt" id="s1" name="test addClass">
+<test id="s1-t1" name="Đăng nhập">
+<kw type="kw" name="resource.Đăng nhập vào hệ thống">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Close Browser">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20131229 20:09:43.988" starttime="20131229 20:09:43.987"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Set Selenium Timeout">
+<doc>Sets the timeout used by various keywords.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<status status="PASS" endtime="20131229 20:09:43.989" starttime="20131229 20:09:43.988"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20131229 20:10:16.362" level="INFO">Opening browser 'Google Chrome' to base url 'http://truongnha.com/login/'</msg>
+<status status="PASS" endtime="20131229 20:10:16.363" starttime="20131229 20:09:43.989"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20131229 20:10:16.507" starttime="20131229 20:10:16.367"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Set Selenium Speed">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20131229 20:10:16.570" starttime="20131229 20:10:16.508"></status>
+</kw>
+<status status="PASS" endtime="20131229 20:10:16.571" starttime="20131229 20:09:43.978"></status>
+</kw>
+<kw type="kw" name="resource.Điền tài khoản">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id_username</arg>
+<arg>${VALID USER}</arg>
+</arguments>
+<msg timestamp="20131229 20:10:16.860" level="INFO">Typing text 'toandv' into text field 'id_username'</msg>
+<status status="PASS" endtime="20131229 20:10:16.861" starttime="20131229 20:10:16.574"></status>
+</kw>
+<status status="PASS" endtime="20131229 20:10:16.862" starttime="20131229 20:10:16.572"></status>
+</kw>
+<kw type="kw" name="resource.Điền mật khẩu">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id_password</arg>
+<arg>${VALID PASSWD}</arg>
+</arguments>
+<msg timestamp="20131229 20:10:16.916" level="INFO">Typing text 'phindpeft904' into text field 'id_password'</msg>
+<status status="PASS" endtime="20131229 20:10:16.917" starttime="20131229 20:10:16.866"></status>
+</kw>
+<status status="PASS" endtime="20131229 20:10:16.917" starttime="20131229 20:10:16.863"></status>
+</kw>
+<kw type="kw" name="resource.Ấn nút đăng nhập">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Button">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>login</arg>
+</arguments>
+<msg timestamp="20131229 20:10:22.722" level="INFO">Clicking button 'login'.</msg>
+<status status="PASS" endtime="20131229 20:10:22.722" starttime="20131229 20:10:16.921"></status>
+</kw>
+<status status="PASS" endtime="20131229 20:10:22.722" starttime="20131229 20:10:16.919"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20131229 20:10:22.724" critical="yes" starttime="20131229 20:09:43.975"></status>
+</test>
+<test id="s1-t2" name="Thêm lớp học [Không có tên lớp]">
+<kw type="kw" name="resource.Ấn nút lớp học">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${CLASS URL}</arg>
+</arguments>
+<msg timestamp="20131229 20:10:24.190" level="INFO">Clicking link '/school/classes'.</msg>
+<status status="PASS" endtime="20131229 20:10:24.190" starttime="20131229 20:10:22.733"></status>
+</kw>
+<status status="PASS" endtime="20131229 20:10:24.191" starttime="20131229 20:10:22.731"></status>
+</kw>
+<kw type="kw" name="resource.Thêm lớp học mới">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${ADDCLASS URL}</arg>
+</arguments>
+<msg timestamp="20131229 20:10:28.331" level="INFO">Clicking link '/school/addclass'.</msg>
+<msg timestamp="20131229 20:10:28.331" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20131229 20:10:28.340" level="FAIL">ERROR: Current window or frame is closed!</msg>
+<status status="FAIL" endtime="20131229 20:10:28.341" starttime="20131229 20:10:24.195"></status>
+</kw>
+<status status="FAIL" endtime="20131229 20:10:28.342" starttime="20131229 20:10:24.192"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="FAIL" endtime="20131229 20:10:28.343" critical="yes" starttime="20131229 20:10:22.727">ERROR: Current window or frame is closed!</status>
+</test>
+<test id="s1-t3" name="Thêm lớp học [Không có giáo viên chủ nhiệm]">
+<kw type="kw" name="resource.Điền tên lớp">
+<doc></doc>
+<arguments>
+<arg>12 A</arg>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id_name</arg>
+<arg>${tên lớp}</arg>
+</arguments>

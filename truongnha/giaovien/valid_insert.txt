@@ -1,0 +1,41 @@
+*** Settings ***
+Resource       resource.txt
+
+
+*** Test Cases ***
+
+Hiển thị trang giáo viên
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Click Button  login
+
+Thêm thành công giáo viên 1
+	Thêm thành công  Nguyễn Văn B  02/03/1992  01222211134  Nam  Toán  Tổ Hóa  ---------
+	
+Thêm thành công giáo viên 2
+	Thêm thành công  Trần Thị Hoài  05/08/1980  01222255555  Nữ  Vật lí  Tổ Lý  Nhóm 1
+	
+Thêm thành công giáo viên 3
+	Thêm thành công  Nguyễn Thị Lan  07/07/1982  01222255555  Nữ  ---------  ---------  ---------
+	
+Thêm thành công giáo viên 4
+	Thêm thành công  Lê Thanh Hải  05/07/1982  01244444878  Nam  NN2  ---------  ---------
+	
+*** Keywords ***
+Thêm thành công  [Arguments]  ${name}  ${birthday}  ${phone}  ${sex}  ${major}  ${team}  ${group}			
+	Set Selenium Speed  		0.1
+	Đi tới trang Giáo viên	
+	Mở menu quản lý giáo viên
+	Ấn nút thêm giáo viên
+	Nhập họ tên                 ${name}
+	Nhập ngày sinh              ${birthday}
+	Nhập số điện thoại          ${phone}
+	Chọn giới tính              ${sex}
+	Chọn chuyên môn             ${major}
+	Chọn tổ                     ${team}
+	Chọn nhóm                   ${group}
+	Ấn nút thêm
+	Set Selenium Speed  		0.5		
+	Element Should Be Visible   notify	
+	Element Should Contain  notify  Bạn vừa thêm một giáo viên mới.

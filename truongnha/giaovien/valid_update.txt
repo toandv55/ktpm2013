@@ -1,0 +1,373 @@
+*** Settings ***
+Resource       resource.txt
+
+*** Test Cases ***
+
+Hiển thị trang giáo viên
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Click Button  login
+
+Cập nhật họ
+	Cập nhật thành công họ  3506  Nguyễn Văn
+
+Cập nhật tên
+	Cập nhật thành công tên  3506  Hòa
+
+Cập nhật ngày sinh	
+	Cập nhật thành công ngày sinh  3506  02/03/1989
+
+Cập nhật số điện thoại	
+	Cập nhật thành công số điện thoại  3506  01231231234
+
+Cập nhật giới tính
+	Cập nhật thành công giới tính  3506  Nữ
+	
+Cập nhật chuyên môn
+	Cập nhật thành công chuyên môn  3506  Vật lí
+
+Cập nhật tổ
+	Cập nhật thành công tổ  3506  Tổ Lý
+
+Cập nhật nhóm
+	Cập nhật thành công nhóm  3506  ---------
+
+Cập nhật giáo viên thành công
+	Cập nhật thành công các trường cơ bản  3506  Nguyễn Văn  Hòa  02/03/1970  01211211122  Nam  Toán  Tổ Toán  Nhóm 1
+	
+Cập nhật nơi sinh
+	Cập nhật thành công nơi sinh  			3506  Hà Nội
+
+Cập nhật dân tộc
+	Cập nhật thành công dân tộc  			3506  Mường
+
+Cập nhật tôn giáo
+	Cập nhật thành công tôn giáo  			3506  Phật giáo
+	
+Cập nhật quốc tịch
+	Cập nhật thành công quốc tịch  			3506  Nga
+	
+Cập nhật quê quán
+	Cập nhật thành công quê quán  			3506  Mascova
+
+Cập nhật địa chỉ
+	Cập nhật thành công địa chỉ  			3506  Số 4 - Hoàng Quốc Việt
+
+Cập nhật điện thoại
+	Cập nhật thành công điện thoại  		3506  01211211122
+
+Cập nhật email
+	Cập nhật thành công email  				3506  hoa@gmail.com
+
+Cập nhật chứng minh thư
+	Cập nhật thành công chứng minh thư  	3506  0123123123
+
+Cập nhật ngày cấp
+	Cập nhật thành công ngày cấp  			3506  02/06/2011
+
+Cập nhật nơi cấp
+	Cập nhật thành công nơi cấp  			3506  Hà Nội
+
+Cập nhật ngày vào đoàn
+	Cập nhật thành công ngày vào đoàn		3506  05/05/2001
+
+Cập nhật ngày vào đảng
+	Cập nhật thành công ngày vào đảng		3506  05/06/2002
+
+Cập nhật mức lương
+	Cập nhật thành công mức lương  			3506  2000000
+
+Cập nhật hệ số lương
+	Cập nhật thành công hệ số lương			3506  2.0
+
+Cập nhật số bảo hiểm xã hội
+	Cập nhật thành công số bhxh  			3506  0123456789
+
+
+
+
+*** Keywords ***
+
+Cập nhật thành công các trường cơ bản  [Arguments]  ${teacherId}  ${họ mới}  ${tên mới}  ${ngày sinh}  ${số điện thoại}  ${giới tính}  ${chuyên môn}  ${tổ}  ${nhóm}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Nhập họ                                 ${họ mới}
+	Nhập tên                                ${tên mới}
+	Nhập ngày sinh              			${ngày sinh}
+	Nhập số điện thoại          			${số điện thoại}
+	Chọn giới tính              			${giới tính}
+	Chọn chuyên môn             			${chuyên môn}
+	Chọn tổ                     			${tổ}
+	Sửa nhóm                   				${nhóm}
+	Ấn nút Lưu
+	Phải hiển thị trang của giáo viên       ${teacherId} 
+	Chờ thông báo hiển thị	
+	Element Should Be Visible   			notify
+	Element Should Contain  notify  		Đã lưu	
+	Đi tới trang sửa của giáo viên          ${teacherId}		
+	Họ phải là                              ${họ mới}
+	Tên phải là                             ${tên mới}
+	Ngày sinh phải là 						${ngày sinh}
+	Số điện thoại phải là					${số điện thoại}
+	Giới tính phải là						${giới tính}
+	Chuyên môn phải là						${chuyên môn}
+	Tổ phải là								${tổ}
+	Nhóm phải là							${nhóm}
+
+Cập nhật thành công họ  [Arguments]  ${teacherId}  ${họ mới}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Nhập họ                                 ${họ mới}
+	Ấn nút Lưu
+	Wait Until Page Contains				Đã lưu
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Họ phải là                              ${họ mới}
+	
+Cập nhật thành công tên  [Arguments]  ${teacherId}  ${tên mới}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Nhập tên                                ${tên mới}
+	Ấn nút Lưu
+	Wait Until Page Contains				Đã lưu
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Tên phải là                             ${tên mới}
+	
+Cập nhật thành công ngày sinh  [Arguments]  ${teacherId}  ${ngày sinh}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Nhập ngày sinh              			${ngày sinh}
+	Ấn nút Lưu
+	Wait Until Page Contains				Đã lưu
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Ngày sinh phải là 						${ngày sinh}
+
+Cập nhật thành công số điện thoại  [Arguments]  ${teacherId}  ${số điện thoại}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Nhập số điện thoại          			${số điện thoại}
+	Ấn nút Lưu
+	Wait Until Page Contains				Đã lưu
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Số điện thoại phải là					${số điện thoại}
+
+Cập nhật thành công giới tính  [Arguments]  ${teacherId}  ${giới tính}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Chọn giới tính              			${giới tính}
+	Ấn nút Lưu
+	Wait Until Page Contains				Đã lưu
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Giới tính phải là						${giới tính}	
+
+Cập nhật thành công chuyên môn  [Arguments]  ${teacherId}  ${chuyên môn}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Chọn chuyên môn             			${chuyên môn}
+	Ấn nút Lưu
+	Wait Until Page Contains				Đã lưu
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Chuyên môn phải là                      ${chuyên môn}
+
+Cập nhật thành công tổ  [Arguments]  ${teacherId}  ${tổ}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Chọn tổ                     			${tổ}
+	Ấn nút Lưu
+	Wait Until Page Contains				Đã lưu
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Tổ phải là                             	${tổ}
+
+Cập nhật thành công nhóm  [Arguments]  ${teacherId}  ${nhóm}
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Chọn nhóm                               ${nhóm}
+	Ấn nút Lưu
+	Wait Until Page Contains				Đã lưu
+	Đi tới trang sửa của giáo viên          ${teacherId}
+	Nhóm phải là                            ${nhóm}
+
+Cập nhật thành công nơi sinh  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          	${teacherId}
+	Input Text  id_birth_place                	${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains					Đã lưu
+	Đi tới trang sửa của giáo viên          	${teacherId}
+	Textfield Should Contain  id_birth_place  	${giá trị}
+
+Cập nhật thành công dân tộc  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          	${teacherId}
+	Input Text  id_dan_toc                		${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains					Đã lưu
+	Đi tới trang sửa của giáo viên          	${teacherId}
+	Textfield Should Contain  id_dan_toc  		${giá trị}
+	
+Cập nhật thành công tôn giáo  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          	${teacherId}
+	Input Text  id_ton_giao                		${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains					Đã lưu
+	Đi tới trang sửa của giáo viên          	${teacherId}
+	Textfield Should Contain  id_ton_giao  		${giá trị}
+
+Cập nhật thành công quốc tịch  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Input Text  id_quoc_tich                		${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains						Đã lưu
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Textfield Should Contain  id_quoc_tich  		${giá trị}
+	
+Cập nhật thành công quê quán  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Input Text  id_home_town                		${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains						Đã lưu
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Textfield Should Contain  id_home_town  		${giá trị}
+
+Cập nhật thành công địa chỉ  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Input Text  id_current_address                	${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains						Đã lưu
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Textfield Should Contain  id_current_address  	${giá trị}
+
+Cập nhật thành công điện thoại  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Input Text  id_phone                			${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains						Đã lưu
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Textfield Should Contain  id_phone  			${giá trị}
+
+Cập nhật thành công email  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Input Text  id_email                			${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains						Đã lưu
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Textfield Should Contain  id_email  			${giá trị}
+
+Cập nhật thành công chứng minh thư  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Input Text  id_cmt                				${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains						Đã lưu
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Textfield Should Contain  id_cmt  				${giá trị}
+
+Cập nhật thành công ngày cấp  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Input Text  id_ngay_cap                			${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains						Đã lưu
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Textfield Should Contain  id_ngay_cap  			${giá trị}
+
+Cập nhật thành công nơi cấp  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Input Text  id_noi_cap                			${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains						Đã lưu
+	Đi tới trang sửa của giáo viên          		${teacherId}
+	Textfield Should Contain  id_noi_cap  			${giá trị}
+
+Cập nhật thành công ngày vào đoàn  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Input Text  id_ngay_vao_doan                			${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains								Đã lưu
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Textfield Should Contain  id_ngay_vao_doan  			${giá trị}
+
+Cập nhật thành công ngày vào đảng  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Input Text  id_ngay_vao_dang                			${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains								Đã lưu
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Textfield Should Contain  id_ngay_vao_dang  			${giá trị}
+
+Cập nhật thành công mức lương  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Input Text  id_muc_luong                				${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains								Đã lưu
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Textfield Should Contain  id_muc_luong  				${giá trị}
+
+Cập nhật thành công hệ số lương  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Input Text  id_hs_luong                					${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains								Đã lưu
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Textfield Should Contain  id_hs_luong  					${giá trị}
+
+Cập nhật thành công số bhxh  [Arguments]  ${teacherId}  ${giá trị}
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Input Text  id_bhxh                						${giá trị}
+	Ấn nút Lưu
+	Wait Until Page Contains								Đã lưu
+	Đi tới trang sửa của giáo viên          				${teacherId}
+	Textfield Should Contain  id_bhxh  						${giá trị}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+Phải hiển thị trang của giáo viên  [Arguments]  ${teacherId}
+	Location Should Be  ${WELCOME URL}/viewTeacherDetail/${teacherId}
+	
+Chọn giáo viên có mã  [Arguments]  ${teacherId}
+	Click Link  ${WELCOME URL}/viewTeacherDetail/${teacherId}
+	
+Đi tới trang sửa của giáo viên  [Arguments]  ${teacherId}
+	Go To  ${WELCOME URL}/viewTeacherDetail/${teacherId}
+
+Nhập họ  [Arguments]  ${lastname}
+	Input Text  id_last_name  ${lastname}
+	
+Nhập tên  [Arguments]  ${firstname}
+	Input Text  id_first_name  ${firstname}
+
+Sửa nhóm  [Arguments]  ${nhóm}
+	Select From List  xpath=//select[@name="group_id"]  ${nhóm}
+	
+Ấn nút Lưu
+	Click Button  Lưu
+	
+Phải hiện thông báo
+	Element Should Be Visible  notify
+
+Chờ thông báo hiển thị
+	Wait Until Element Is Visible  notify  1000	
+	
+Thông báo phải hiển thị đã lưu
+	Element Should Contain  notify  Đã lưu
+
+Họ phải là  [Arguments]  ${lastname}
+	Textfield Should Contain  id_last_name  ${lastname}
+	
+Tên phải là  [Arguments]  ${firstname}
+	Textfield Should Contain  id_first_name  ${firstname}
+
+Ngày sinh phải là  [Arguments]  ${ngày sinh}
+	Textfield Should Contain  id_birthday  ${ngày sinh}
+
+Số điện thoại phải là  [Arguments]  ${số điện thoại}
+	Textfield Should Contain  id_sms_phone  ${số điện thoại}
+	
+Giới tính phải là  [Arguments]  ${giới tính}
+	List Selection Should Be  xpath=//select[@id="id_sex"]  ${giới tính}
+
+Chuyên môn phải là  [Arguments]  ${chuyên môn}
+	List Selection Should Be  xpath=//select[@id="id_major"]  ${chuyên môn}
+
+Tổ phải là  [Arguments]  ${tổ}
+	List Selection Should Be  xpath=//select[@id="id_team_id"]  ${tổ}
+
+Nhóm phải là  [Arguments]  ${nhóm}
+	List Selection Should Be  xpath=//select[@id="id_group_id"]  ${nhóm} 
+
+
+	

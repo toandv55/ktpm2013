@@ -1,0 +1,127 @@
+*** Settings ***
+Resource       resource.txt
+
+*** Test Cases ***
+
+Hiển thị trang giáo viên
+	Mở trang login
+    Input Username  toandv
+    Input Password  phindpeft904
+    Click Button  login
+	
+Thêm tổ thành công
+	Thêm tổ  						Thể dục
+	
+Lỗi không nhập tên tổ
+	Không nhập tên tổ
+	
+Lỗi thêm tổ bị trùng tên
+	Thêm tổ bị trùng tên			Tổ Toán
+
+Sửa tên tổ thành công
+	Sửa tên tổ						Thể dục  		Tổ Thể dục
+	
+Lửa sửa tên tổ bị trùng
+	Sửa tên tổ trùng				Tổ Thể dục  	Tổ Toán
+	
+Xóa tổ thành công
+	Xóa tổ							Tổ Thể dục
+
+Thêm nhóm thành công
+	Thêm nhóm mới					Nhóm B
+	
+Sửa tên nhóm thành công
+	Sửa tên nhóm					Nhóm B		Nhóm C
+
+Thêm nhóm bị trùng
+	Thêm nhóm bị trùng tên					Nhóm C	
+
+*** Keywords ***
+
+Thêm tổ  [Arguments]  ${tên tổ}
+	Đi tới trang Giáo viên
+	Click Link  						xpath=//a[@title="Thêm tổ"]
+	Wait Until Element Is Visible  		rename-team-modal
+	Input Text  						rename-team-input  		${tên tổ}
+	Click Button  						rename-team-submit
+	Wait Until Page Contains  			${tên tổ}	
+	Page Should Contain  				${tên tổ}
+	Page Should Not Contain				Tổ này đã tồn tại.
+
+Không nhập tên tổ
+	Đi tới trang Giáo viên
+	Click Link  xpath=//a[@title="Thêm tổ"]
+	Wait Until Element Is Visible  rename-team-modal	
+	Click Button  rename-team-submit
+	Wait Until Element Is Visible  notify
+	Element Should Contain  notify  Tên còn trống
+
+Thêm tổ bị trùng tên  [Arguments]  ${tên tổ}
+	Đi tới trang Giáo viên
+	Click Link  					xpath=//a[@title="Thêm tổ"]
+	Wait Until Element Is Visible  	rename-team-modal
+	Input Text  					rename-team-input  	${tên tổ}
+	Click Button  					rename-team-submit
+	Wait Until Page Contains   		Tổ này đã tồn tại.
+	Element Should Contain  		notify  Tổ này đã tồn tại.
+	
+Xóa tổ  [Arguments]  ${tên tổ}
+	Đi tới trang Giáo viên
+	Click Link  					xpath=//a[@title="Xóa tổ '${tên tổ}'"]
+	Confirm Action
+	Reload Page
+	Page Should Not Contain  ${tên tổ}
+	
+Sửa tên tổ  [Arguments]  ${tên tổ}  ${tên tổ mới}
+	Đi tới trang Giáo viên
+	Click Link  					xpath=//a[@title="Sửa tên '${tên tổ}'"]
+	Wait Until Element Is Visible  	rename-team-modal
+	Input Text  					rename-team-input  	${tên tổ mới}
+	Click Button  					rename-team-submit
+	Wait Until Page Contains  		${tên tổ mới}
+	Page Should Contain				Đổi tên thành công
+	Page Should Contain  			${tên tổ mới}
+	
+	
+Sửa tên tổ trùng  [Arguments]  ${tên tổ}  ${tên tổ mới}
+	Đi tới trang Giáo viên
+	Click Link  					xpath=//a[@title="Sửa tên '${tên tổ}'"]
+	Wait Until Element Is Visible  	rename-team-modal
+	Input Text  					rename-team-input  	${tên tổ mới}
+	Click Button  					rename-team-submit
+	Wait Until Page Contains   		Tên tổ này đã tồn tại.
+	Element Should Contain  		notify  	Tên tổ này đã tồn tại.
+	
+Thêm nhóm mới	[Arguments]  	${tên nhóm}
+	Đi tới trang Giáo viên
+	Click Link  					xpath=//a[@title="Thêm nhóm mới"]
+	Wait Until Element Is Visible  	rename-team-modal
+	Input Text  					rename-team-input  	${tên nhóm}
+	Click Button  					rename-team-submit	
+	Wait Until Page Contains  		${tên nhóm}
+	Page Should Contain  			${tên nhóm}	
+	Page Should Not Contain			Nhóm này đã tồn tại.
+
+Thêm nhóm bị trùng tên  [Arguments]  ${tên nhóm}
+	Đi tới trang Giáo viên
+	Click Link  					xpath=//a[@title="Thêm nhóm mới"]
+	Wait Until Element Is Visible  	rename-team-modal
+	Input Text  					rename-team-input  	${tên nhóm}
+	Click Button  					rename-team-submit
+	Wait Until Page Contains   		Tổ này đã tồn tại.
+	Element Should Contain  		notify  Nhóm này đã tồn tại.
+	
+Sửa tên nhóm  	[Arguments]		${tên nhóm}  ${tên nhóm mới}
+	Đi tới trang Giáo viên
+	Click Link  					xpath=//a[@title="Sửa tên nhóm '${tên nhóm}'"]
+	Wait Until Element Is Visible  	rename-team-modal
+	Input Text  					rename-team-input  	${tên nhóm mới}
+	Click Button  					rename-team-submit
+	Wait Until Page Contains  		${tên nhóm mới}
+	Page Should Contain				Đổi tên thành công
+	Page Should Contain  			${tên nhóm mới}
+	
+Xóa nhóm  [Arguments]  ${tên nhóm}
+	Đi tới trang Giáo viên
+	Click Link  					xpath=//a[@title="Xóa nhóm '${tên nhóm}'"]
+	Confirm Action		
